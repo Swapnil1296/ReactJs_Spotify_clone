@@ -1,10 +1,13 @@
 const jwt = require("jsonwebtoken");
 
-// Fix: Correct the export statement
-module.exports.getToken = async (email, user) => {
+exports = {};
+
+exports.getToken = async (email, user) => {
   const token = jwt.sign(
-    { identifier: user._id, email }, // Include email in the payload if needed
+    { identifier: user._id },
     "thisisAsecretthisSUPPOsedTOBE"
   );
   return token;
 };
+
+module.exports = exports;

@@ -1,29 +1,30 @@
 const mongoose = require("mongoose");
 
 const Playlist = new mongoose.Schema({
-  Song: {
+  name: {
     type: String,
     required: true,
   },
-  Thumbnail: {
+  thumbnail: {
     type: String,
-    required: false,
+    required: true,
   },
-
   owner: {
     type: mongoose.Types.ObjectId,
-    ref: "user",
+    ref: "User",
   },
+  // 1. Playlist mein songs kaunse hain
+  // 2. Playlist collaborators
   songs: [
     {
       type: mongoose.Types.ObjectId,
-      ref: "song",
+      ref: "Song",
     },
   ],
   collaborators: [
     {
       type: mongoose.Types.ObjectId,
-      ref: "user",
+      ref: "User",
     },
   ],
 });

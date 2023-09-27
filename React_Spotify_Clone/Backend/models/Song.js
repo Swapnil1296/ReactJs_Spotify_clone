@@ -1,23 +1,28 @@
 const mongoose = require("mongoose");
+// How to create a model
+// Step 1 :require mongoose
+// Step 2 :Create a mongoose schema (structure of a user)
+// Step 3 : Create a model
 
 const Song = new mongoose.Schema({
-  Song: {
+  name: {
     type: String,
     required: true,
   },
-  Thumbnail: {
+  thumbnail: {
     type: String,
-    required: false,
+    required: true,
   },
-  Track: {
+  track: {
     type: String,
     required: true,
   },
   artist: {
     type: mongoose.Types.ObjectId,
-    ref: "user",
+    ref: "User",
   },
 });
 
 const SongModel = mongoose.model("Song", Song);
+
 module.exports = SongModel;
