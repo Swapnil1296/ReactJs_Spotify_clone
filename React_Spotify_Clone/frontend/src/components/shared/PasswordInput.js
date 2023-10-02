@@ -9,8 +9,8 @@ const PasswordInput = ({ label, placeholder }) => {
       <input
         type="password"
         placeholder={placeholder}
-        id="any"
-        className="p-2 border border-gray-400 border-solid rounded placeholder-gray-300"
+        id={label}
+        className="p-3 border border-gray-400 border-solid rounded placeholder-gray-300"
       />
     </div>
   );
