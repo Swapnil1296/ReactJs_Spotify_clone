@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const JwtStrategy = require("passport-jwt").Strategy,
   ExtractJwt = require("passport-jwt").ExtractJwt;
 const passport = require("passport");
@@ -10,6 +11,7 @@ const playlistRoutes = require("./routes/playlist");
 require("dotenv").config();
 const app = express();
 const port = 8000;
+app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
   console.log("Headers:", req.headers);
