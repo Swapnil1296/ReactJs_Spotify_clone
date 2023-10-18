@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import { Icon } from "@iconify/react";
 import TextInput from "../components/shared/TextInput";
 import PasswordInput from "../components/shared/PasswordInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { makeUnauthenticatedPOSTRequests } from "../utils/serverHelpers";
 
 export const SignUpComponent = () => {
@@ -12,6 +13,8 @@ export const SignUpComponent = () => {
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [cookie, setCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
 
   const signUp = async (event) => {
     event.preventDefault();
@@ -23,7 +26,15 @@ export const SignUpComponent = () => {
     );
     if (response && !response.err) {
       console.log("response data +", response);
+
+      // setting received token to cookies & after 30 days expire period.
+
+      const token = response.token;
+      const date = new Date();
+      date.setDate(date.getDate() + 30);
+      setCookie("token", token, { path: "/", expires: date });
       alert("Success !");
+      navigate("/home");
     } else {
       alert("Failure");
     }

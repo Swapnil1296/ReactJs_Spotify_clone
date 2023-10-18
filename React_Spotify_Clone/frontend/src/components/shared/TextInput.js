@@ -1,9 +1,9 @@
 import React from "react";
 
-const TextInput = ({ label, placeholder, value, setValue }) => {
+const TextInput = ({ label, placeholder, value, setValue, labelClass }) => {
   return (
     <div className="textInputDiv flex flex-col space-y-2 w-full my-6">
-      <label for={label} className="font-semibold">
+      <label for={label} className={`font-semibold ${labelClass}`}>
         {label}
       </label>
       <input
