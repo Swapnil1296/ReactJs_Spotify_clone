@@ -3,7 +3,7 @@ import React from "react";
 import LoggedInContainer from "../Containers/LoggedInContainer";
 const LoggedInHomeComponent = () => {
   return (
-    <LoggedInContainer>
+    <LoggedInContainer currentActiveScreen={"home"}>
       <PlaylistView titleText="Focus" />
       <PlaylistView titleText="Spotify Playlist" />
       <PlaylistView titleText="Sound of India" />

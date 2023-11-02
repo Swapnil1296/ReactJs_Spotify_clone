@@ -9,21 +9,34 @@ import UploadSongs from "./routes/UploadSongs";
 import MyMusic from "./routes/MyMusic";
 import SongContext from "./Context/SongContext";
 import { useState } from "react";
+import SearchPage from "./routes/SearchPage";
 
 function App() {
   const [cookie, setCookie] = useCookies(["token"]);
   const [currentSong, setCurrentSong] = useState(null);
+  const [soundPlayed, setSoundPlayed] = useState(null);
+  const [isPaused, setIsPaused] = useState(true);
 
   return (
     <div className="w-screen h-screen font-poppins">
       <BrowserRouter>
         {cookie.token ? (
           // logged in routes
-          <SongContext.Provider value={{ currentSong, setCurrentSong }}>
+          <SongContext.Provider
+            value={{
+              currentSong,
+              setCurrentSong,
+              soundPlayed,
+              setSoundPlayed,
+              isPaused,
+              setIsPaused,
+            }}
+          >
             <Routes>
               <Route path="/home" element={<LoggedInHomeComponent />} />
               <Route path="/upload" element={<UploadSongs />} />
               <Route path="/myMusic" element={<MyMusic />} />
+              <Route path="/search" element={<SearchPage />} />
               {/* if the user is logged in then only show home component ,he will not able to access login or signup page by changing the url in search bar */}
               <Route path="*" element={<Navigate to="/home" />} />
             </Routes>

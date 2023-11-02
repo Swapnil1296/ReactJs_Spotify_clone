@@ -1,20 +1,31 @@
 import { Icon } from "@iconify/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const IconText = ({ iconName, displayText, active }) => {
+const IconText = ({ iconName, displayText, active, targetLink, onClick }) => {
+  console.log("openModal:", onClick);
   return (
-    <div className="flex items-center justify-start cursor-pointer">
-      <div className="px-5 py-2">
-        <Icon icon={iconName} color={active ? "white" : "grey"} fontSize={32} />
-      </div>
+    <Link to={targetLink} className="block">
       <div
-        className={`${
-          active ? "text-white" : " text-gray-400"
-        } text-base font-semibold hover:text-white`}
+        className="flex items-center justify-start cursor-pointer"
+        onClick={onClick}
       >
-        {displayText}
+        <div className="px-5 py-2">
+          <Icon
+            icon={iconName}
+            color={active ? "white" : "grey"}
+            fontSize={32}
+          />
+        </div>
+        <div
+          className={`${
+            active ? "text-white" : " text-gray-400"
+          } text-base font-semibold hover:text-white`}
+        >
+          {displayText}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

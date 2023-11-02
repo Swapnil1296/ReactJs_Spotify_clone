@@ -54,7 +54,7 @@ const HomeComponent = () => {
               <div className="h-1/2 border-r border-white  "></div>
             </div>
             <div className="w-2/5 flex justify-around h-full items-center">
-              <NavText displayText={"Sign Up"} />
+              <NavText displayText={"Sign Up"} pageURL={"/signup"} />
               <div className="bg-white h-2/3 px-8 flex items-center justify-center rounded-full font-semibold cursor-pointer">
                 Log In
               </div>
